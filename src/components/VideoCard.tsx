@@ -55,7 +55,7 @@ export function VideoCard({
       <VideoView
         player={player}
         style={styles.video}
-        contentFit="cover"
+        contentFit="contain"
         nativeControls={false}
       />
       <View style={styles.overlay}>

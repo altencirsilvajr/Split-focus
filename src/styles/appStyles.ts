@@ -45,7 +45,7 @@ export const styles = StyleSheet.create({
   },
   card: {
     overflow: 'hidden',
-    backgroundColor: '#111827',
+    backgroundColor: '#000',
   },
   video: {
     width: '100%',
