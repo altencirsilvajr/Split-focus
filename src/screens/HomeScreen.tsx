@@ -13,8 +13,8 @@ export function HomeScreen({ selectedCategory, onSelectCategory }: HomeScreenPro
   return (
     <View style={styles.homeContainer}>
       <View style={styles.header}>
-        <Text style={styles.title}>Brainrot Feed</Text>
-        <Text style={styles.subtitle}>Compatível com tela dividida</Text>
+        <Text style={styles.title}>Split Focus</Text>
+        <Text style={styles.subtitle}>Roast your brain</Text>
       </View>
 
       <View style={styles.chipsRow}>
