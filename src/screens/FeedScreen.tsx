@@ -45,7 +45,7 @@ export function FeedScreen({ category, onBack }: FeedScreenProps) {
       }}
     >
       <Pressable style={styles.backButton} onPress={onBack}>
-        <Text style={styles.backButtonText}>← Voltar</Text>
+        <Text style={styles.backButtonText}>←</Text>
       </Pressable>
 
       {feedSize.height > 0 && (
