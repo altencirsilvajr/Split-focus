@@ -1,6 +1,6 @@
 import { useEvent } from 'expo';
 import { useEffect } from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { Platform, Pressable, Text, View } from 'react-native';
 import { useVideoPlayer, VideoView } from 'expo-video';
 
 import { styles } from '../styles/appStyles';
@@ -56,7 +56,8 @@ export function VideoCard({
         player={player}
         style={styles.video}
         contentFit="contain"
-        nativeControls={false}
+        nativeControls={Platform.OS === 'ios'}
+        allowsPictureInPicture={Platform.OS === 'ios'}
       />
       <View style={styles.overlay}>
         <Text style={styles.videoTitle}>{title}</Text>
