@@ -1,6 +1,7 @@
 import { useEvent } from 'expo';
-import { useEffect } from 'react';
-import { Platform, Pressable, Text, View } from 'react-native';
+import { useEffect, useRef, useState } from 'react';
+import { Animated, Platform, Pressable, Text, View } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 import { useVideoPlayer, VideoView } from 'expo-video';
 
 import { styles } from '../styles/appStyles';
@@ -22,6 +23,9 @@ export function VideoCard({
   title,
   category,
 }: VideoCardProps) {
+  const [isMuted, setIsMuted] = useState(false);
+  const muteScale = useRef(new Animated.Value(1)).current;
+
   const player = useVideoPlayer(source, (p) => {
     p.loop = true;
     p.muted = false;
@@ -47,6 +51,29 @@ export function VideoCard({
     }
   };
 
+  const animateMuteButton = () => {
+    Animated.sequence([
+      Animated.timing(muteScale, {
+        toValue: 0.88,
+        duration: 80,
+        useNativeDriver: true,
+      }),
+      Animated.spring(muteScale, {
+        toValue: 1,
+        friction: 4,
+        tension: 120,
+        useNativeDriver: true,
+      }),
+    ]).start();
+  };
+
+  const handleMuteToggle = () => {
+    const nextMuted = !isMuted;
+    player.muted = nextMuted;
+    setIsMuted(nextMuted);
+    animateMuteButton();
+  };
+
   return (
     <Pressable
       style={[styles.card, { height: cardHeight, width: cardWidth }]}
@@ -59,6 +86,22 @@ export function VideoCard({
         nativeControls={Platform.OS === 'ios'}
         allowsPictureInPicture={Platform.OS === 'ios'}
       />
+      <Animated.View style={{ transform: [{ scale: muteScale }] }}>
+        <Pressable
+          style={styles.muteButton}
+          onPress={(e) => {
+            e.stopPropagation();
+            handleMuteToggle();
+          }}
+        >
+          <Ionicons
+            name={isMuted ? 'volume-mute' : 'volume-high'}
+            size={20}
+            color="#fff"
+          />
+        </Pressable>
+      </Animated.View>
+
       <View style={styles.overlay}>
         <Text style={styles.videoTitle}>{title}</Text>
         <Text style={styles.videoCategory}>{category}</Text>

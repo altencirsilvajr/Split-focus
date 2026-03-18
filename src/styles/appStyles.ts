@@ -60,6 +60,21 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingVertical: 8,
   },
+  muteButton: {
+    position: 'absolute',
+    top: 50,
+    right: 16,
+    zIndex: 10,
+    backgroundColor: 'rgba(0,0,0,0.55)',
+    borderRadius: 999,
+    width: 42,
+    height: 42,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  muteButtonText: {
+    fontSize: 18,
+  },
   videoTitle: {
     color: 'white',
     fontWeight: '700',
