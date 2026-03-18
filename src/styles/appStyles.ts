@@ -60,11 +60,13 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingVertical: 8,
   },
-  muteButton: {
+  muteButtonContainer: {
     position: 'absolute',
     top: 50,
     right: 16,
     zIndex: 10,
+  },
+  muteButton: {
     backgroundColor: 'rgba(0,0,0,0.55)',
     borderRadius: 999,
     width: 42,

@@ -86,7 +86,9 @@ export function VideoCard({
         nativeControls={Platform.OS === 'ios'}
         allowsPictureInPicture={Platform.OS === 'ios'}
       />
-      <Animated.View style={{ transform: [{ scale: muteScale }] }}>
+      <Animated.View
+        style={[styles.muteButtonContainer, { transform: [{ scale: muteScale }] }]}
+      >
         <Pressable
           style={styles.muteButton}
           onPress={(e) => {
